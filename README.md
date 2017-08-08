@@ -32,4 +32,4 @@ now the app is ready to run, open your browser and go to localhost::4200
 
 #### Personal Notes
 
-Core elements are the same. A view for all the weapons, a view for the selected weapons description and the actual calculator itself. However I combnined all three views to better resemble the in-game view that Dark Souls 3 players are familiar with.
+Core elements are the same. A view for all the weapons, a view for the selected weapon, its description, stats, etc. Lastly is the actual calculator itself. However I combnined all three views to better resemble the in-game menu that Dark Souls 3 players are familiar with.

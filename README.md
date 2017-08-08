@@ -34,4 +34,5 @@ now the app is ready to run, open your browser and go to localhost::4200
 
 Core elements are the same. A view for all the weapons, a view for the selected weapon, its description, stats, etc. Lastly is the actual calculator itself. However I combnined all three views to better resemble the in-game menu that Dark Souls 3 players are familiar with.
 
-![alt text](https://raw.githubusercontent.com/Derling/ds3-ar-v2/master/ds3-ar-v2.demo.png)
+![alt text](https://github.com/Derling/ds3-ar-v2/blob/master/ds3-ar-v2-demo.png)
+https://github.com/Derling/ds3-ar-v2/blob/master/ds3-ar-v2-demo.png

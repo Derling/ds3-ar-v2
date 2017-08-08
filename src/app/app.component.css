@@ -1,0 +1,80 @@
+* {
+	box-sizing: border-box;
+}
+
+#main {
+	margin: 0 auto;
+	display: block;
+	width: 100%;
+	background-color: #151417;
+	text-align: center;
+}
+
+#weapons-tbl {
+	height: 350px;
+	overflow: auto;
+	display: inline-block;
+}
+
+.title {
+	color: gray;
+	margin: 0;
+	text-align: center;
+}
+
+#wep-desc-tbl {
+	display: inline-block;
+	height: inherit;
+	font-size: 25px;
+	text-align: initial;
+}
+
+.icon {
+	width:100px;
+	height:100px;
+	object-fit:contain;
+}
+
+.desc {
+	color: white;
+	border-bottom: 1px solid #4a3d26;
+}
+
+.label {
+	color: #b9ab8f;
+	border-bottom: 1px solid #4a3d26;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.chsn-wpn {
+	height:280px;
+	width: 300px;
+	object-fit: contain;
+}
+
+#calculator-tbl {
+	display: inline-block;
+	height: 330px;
+}
+
+.input {
+	width: 30px;
+	display: inline;
+	float: right;
+	margin: 10px 5px 0px 10px;
+}
+
+.btn {
+	float: right;
+	margin-top: 10px;
+}
+
+.stat {
+	margin-right: 20px;
+}
+
+.ar {
+	color: green;
+	font-size: 20px;
+}

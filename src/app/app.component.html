@@ -1,0 +1,213 @@
+<div id='main'>
+	<h1 class='title'>Dark souls 3 Attack Rating Calculator</h1>
+	<div id='weapons-tbl'>
+		<table>
+			<thead>
+			</thead>
+			<tbody>
+				<tr *ngFor='let weapon of weapons;let i=index;'>
+				<div class='wep-div' *ngIf='i % 5 == 0 '>
+					<td (click)='chooseWeapon(i)'>
+						<img title='{{weapons[i].name}}' class='icon' alt='image not found' src='http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/{{weapons[i].url}}.png' />
+					</td>
+					<td (click)='chooseWeapon(i+1)' *ngIf='weapons[i+1]'>
+						<img title='{{weapons[i+1].name}}' class='icon' alt='image not found' src='http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/{{weapons[i+1].url}}.png' />
+					</td>
+					<td (click)='chooseWeapon(i+2)' *ngIf='weapons[i+2]'>
+						<img title='{{weapons[i+2].name}}' class='icon' alt='image not found' src='http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/{{weapons[i+2].url}}.png' />
+					</td>
+					<td (click)='chooseWeapon(i+3)' *ngIf='weapons[i+3]'>
+						<img title='{{weapons[i+3].name}}' class='icon' alt='image not found' src='http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/{{weapons[i+3].url}}.png' />
+					</td>
+					<td (click)='chooseWeapon(i+4)' *ngIf='weapons[i+4]'>
+						<img title='{{weapons[i+4].name}}' class='icon' alt='image not found' src='http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/{{weapons[i+4].url}}.png' />
+					</td>
+				</div>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id='wep-desc-tbl'>
+		<table>
+			<thead>
+			</thead>
+			<tbody *ngIf='currentWeapon'>
+				<tr>
+					<td class='desc' colspan=2>
+						{{currentWeapon.name}}
+					</td>
+					<td rowspan=8 colspan=2>
+						<img class='chsn-wpn' title='{{currentWeapon.name}}' alt='image not found' src='http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/{{currentWeapon.url}}.png'/>
+					</td>
+				</tr>
+				<tr>
+					<td class='desc' colspan=2>
+						<img title="type"  src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/weapon_type-icon.jpg" alt='e'>
+						{{currentWeapon.basic_data.wep_type}}
+					</td>
+				</tr>
+				<tr>
+					<td class='label' colspan=2>
+						Attack Power
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 class='desc lrg-font'>
+						<img src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/icon-wp_physicalAttack.png" alt='e'>						
+						Physical<span style='margin-left:10px;float:right;'>{{base_dmgs.physical | floor}} + {{calculator.bonusPhysical | floor}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 class='desc'>
+						<img src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/icon-magicbonus.png" alt='e'>
+						Magic <span style='margin-left:10px;float:right;'>{{base_dmgs.magic | floor}} + {{calculator.bonusMagic | floor}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 class='desc'>
+						<img src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/icon-firebonus.png" alt='e'>
+						Fire<span style='margin-left:10px;float:right;'>{{base_dmgs.fire | floor}} + {{calculator.bonusFire | floor}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 class='desc'>
+						<img src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/icon-lightningbonus.png" alt='e'>
+						Lightning<span style='margin-left:10px;float:right;'>{{base_dmgs.lightning | floor}} + {{calculator.bonusLightning | floor}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 class='desc'>
+						<img src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/icon-darkbonus.png" alt='e'>
+						Dark<span style='margin-left:10px;float:right;'>{{base_dmgs.dark | floor}} + {{calculator.bonusDark | floor}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan=1 colspan=2 class='label'>
+						Attribute Requirements
+					</td>
+					<td>
+					<div *ngIf="currentWeapon.basic_data.infusable === '!0'">
+						<select [(ngModel)]='infIndex' (change)='changeInfusion()'>
+							<option *ngFor='let inf of infusions; let i = index;' value={{i}}>{{inf}}</option>
+						</select>
+					</div>
+					</td>
+				</tr>
+				<tr>
+					<td class='desc test' >
+						<img title='str' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/STR.jpg" alt='e'>
+						{{currentWeapon.basic_data.str_req}}
+					</td>
+					<td class='desc'>
+						<img title='dex' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/DEX.jpg" alt='e'>
+						{{currentWeapon.basic_data.dex_req}}
+					</td>
+					<td class='desc'>
+						<img title='int' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/INT.jpg" alt='e'>
+						{{currentWeapon.basic_data.int_req}}
+					</td>
+					<td class='desc'>
+						<img title='faith' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/FTH.jpg" alt='e'>
+						{{currentWeapon.basic_data.faith_req}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id='calculator-tbl'>
+		<table>
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td class='label' colspan=2>
+						Class:
+						<select [(ngModel)]='currentClass' (change)='changeClass()'>
+							<option *ngFor='let obj of classes; let i = index' value={{i}}>{{obj.class}}</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class='label' colspan=2>
+						Stats
+					</td>
+				</tr>
+				<tr>
+					<td class='desc' colspan=2>
+						Level : {{currentLevel}}
+					</td>
+				</tr>
+				<tr>
+					<td class='desc stat' colspan=2>
+						<div style='float:left;'>
+							<img title='str' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/STR.jpg" alt='e'/>
+							<strong>Strength</strong>								
+						</div>
+						<button class='btn' (click)='changeStat("str",-1)'>-</button>
+						<button class='btn' (click)='changeStat("str",1)'>+</button>
+						<strong class='input'>{{stats.str}}</strong>
+					</td>
+				</tr>
+				<tr>
+					<td class='desc stat' colspan=2>		
+						<div style='float:left;'>
+							<img title='str' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/DEX.jpg" alt='e'/>
+							<strong>Dexterity</strong>								
+						</div>
+						<button class='btn' (click)='changeStat("dex",-1)'>-</button>
+						<button class='btn' (click)='changeStat("dex",1)'>+</button>
+						<strong class='input'>{{stats.dex}}</strong>
+					</td>
+				</tr>
+				<tr>
+					<td class='desc stat' colspan=2>						
+						<div style='float:left;'>
+							<img title='str' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/INT.jpg" alt='e'/>
+							<strong>Intelligence</strong>								
+						</div>
+						<button class='btn' (click)='changeStat("int",-1)'>-</button>
+						<button class='btn' (click)='changeStat("int",1)'>+</button>
+						<strong class='input'>{{stats.int}}</strong>
+					</td>
+				</tr>
+				<tr>
+					<td class='desc stat' colspan=2>						
+						<div style='float:left;'>
+							<img title='str' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/FTH.jpg" alt='e'/>
+							<strong>Faith</strong>								
+						</div>
+						<button class='btn' (click)='changeStat("faith",-1)'>-</button>
+						<button class='btn' (click)='changeStat("faith",1)'>+</button>
+						<strong class='input'>{{stats.faith}}</strong>
+					</td>
+				</tr>
+				<tr>
+					<td class='desc stat' colspan=2>
+					<div style='float:left;'>
+						<img title='str' src="http://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/luck.jpg" alt='e'/>
+						<strong>Luck</strong>
+					</div>
+						<button class='btn' (click)='changeStat("luck",-1)'>-</button>
+						<button class='btn' (click)='changeStat("luck",1)'>+</button>
+						<strong class='input'>{{stats.luck}}</strong>
+					</td>
+				</tr>
+				<tr class='ar'>
+					<div *ngIf='evalStats() else notMet'>
+						<td>
+							Attack Rating : {{calculator.totalDmg}}
+						</td>
+					</div>
+				</tr>		
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<ng-template #notMet>
+	<td>
+		<span style='color:red;font-size:20px;'>
+			Requirements Not Met
+		</span>
+	</td>
+</ng-template>

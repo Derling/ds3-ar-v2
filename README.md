@@ -43,4 +43,4 @@ Here is a screenshot of my app:
 Here is an in-game screenshot of the menu:
  ![alt text](https://github.com/Derling/ds3-ar-v2/blob/master/in-game-demo.png)
  
- It's clear to see where my inspiration for the reimagining of the app came from. Feel free to view/use this app on my <a href='http://derling.info/ds3.html'>site</a>. 
+ It's clear to see where my inspiration for the reimagining of the app came from. Feel free to view/use this app on my <a href='http://derling.info/ds3.html'>site</a>. (Style not optimized for mobile viewing)
